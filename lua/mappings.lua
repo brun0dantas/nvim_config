@@ -15,6 +15,8 @@ map("n", "<Leader>dj", "<cmd>lua require'dap'.step_over()<CR>", { desc = "Debugg
 map("n", "<Leader>dk", "<cmd>lua require'dap'.step_out()<CR>", { desc = "Debugger step out" })
 map("n", "<Leader>dc", "<cmd>lua require'dap'.continue()<CR>", { desc = "Debugger continue" })
 map("n", "<Leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { desc = "Debugger toggle breakpoint" })
+
+
 map(
 	"n",
 	"<Leader>dx",
@@ -38,6 +40,15 @@ local harpoon = require("harpoon")
 -- REQUIRED
 harpoon:setup()
 -- REQUIRED
+--
+--
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap("i", "<C-.>", 'copilot#Accept("<CR>")', {
+  expr = true,
+  silent = true,
+  noremap = true,
+})
+
 
 vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, {desc = "add to harpoon"})
 vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
